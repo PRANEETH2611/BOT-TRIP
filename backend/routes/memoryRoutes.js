@@ -1,0 +1,29 @@
+import { Router } from "express";
+import {
+  addComment,
+  createMediaToken,
+  deleteMemory,
+  downloadMemory,
+  getMemories,
+  getMemory,
+  streamMedia,
+  toggleLike,
+  uploadMemories
+} from "../controllers/memoryController.js";
+import { protect, protectMedia } from "../middleware/authMiddleware.js";
+import { upload } from "../middleware/uploadMiddleware.js";
+
+const router = Router();
+
+router.get("/:id/media", protectMedia, streamMedia);
+router.use(protect);
+router.post("/upload", upload.array("files", 20), uploadMemories);
+router.get("/", getMemories);
+router.get("/:id/media-token", createMediaToken);
+router.get("/:id/download", downloadMemory);
+router.get("/:id", getMemory);
+router.put("/:id/like", toggleLike);
+router.post("/:id/comment", addComment);
+router.delete("/:id", deleteMemory);
+
+export default router;
