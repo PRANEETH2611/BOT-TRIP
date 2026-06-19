@@ -1,6 +1,7 @@
 # BOT-TRIP
-
 A private, invite-only trip memory vault built with React, Express, MongoDB, and Google Drive. Photos and videos are stored in Google Drive; MongoDB contains metadata only.
+### Developed by @KarthikChilumula685
+### Changes made by @PRANEETH2611
 
 ## Features
 
